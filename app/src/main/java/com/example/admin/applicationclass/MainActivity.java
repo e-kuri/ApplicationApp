@@ -6,7 +6,7 @@ import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String TAG = "MainActivity";
+    private String TAG = "MainActivity ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
