@@ -28,7 +28,7 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "onStartCommand attr value: " + ++ApplicationClass.attribute + "on thread: " + Thread.currentThread().getName());
+        Log.d(TAG, "onStartCommand attribute value: " + ++ApplicationClass.attribute + "on thread: " + Thread.currentThread().getName());
         return super.onStartCommand(intent, flags, startId);
     }
 }
