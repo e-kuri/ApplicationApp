@@ -1,9 +1,13 @@
 package com.example.admin.applicationclass;
 
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +15,16 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String BUNDLE_KEY_MESSAGE = "MESSAGE_KEY";
+    public static final String CUSTOM_EVENT_KEY = "CUSTOM_EVENT";
     private String TAG = "MainActivity ";
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String message = intent.getStringExtra(BUNDLE_KEY_MESSAGE);
+            Log.d(TAG, "Got message: " + message);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
         startService(i);
         Intent iService = new Intent(this, MyIntentService.class);
         startService(iService);
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter(CUSTOM_EVENT_KEY));
+    }
+
+    public void broadcastMethod(){
+        Intent i = new Intent(this, BroadcastActivity.class);
+        startActivity(i);
     }
 
     @Override

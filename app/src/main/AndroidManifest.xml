@@ -23,6 +23,7 @@
         <service android:name=".MyIntentService" />
 
         <activity android:name=".ImageActivity" />
+        <activity android:name=".BroadcastActivity" />
 
         <receiver
             android:name=".NetworkReceiver"
