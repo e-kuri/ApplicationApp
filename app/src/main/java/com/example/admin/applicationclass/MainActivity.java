@@ -7,6 +7,7 @@ import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,10 +17,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d(TAG, "onCreate: ");
-        Log.d(TAG, "onCreate attr value = " + ++ApplicationClass.attribute);
+        Log.d(TAG, "onCreate attr value = " + ++ApplicationClass.attribute + " on thread: " + Thread.currentThread().getName());
         Intent i = new Intent(this, MyService.class);
         startService(i);
+        Intent iService = new Intent(this, MyIntentService.class);
+        startService(iService);
     }
 
     @Override
@@ -59,5 +61,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    public void startImage(View view) {
+        Intent i = new Intent(this, ImageActivity.class);
+        startActivity(i);
+    }
 }

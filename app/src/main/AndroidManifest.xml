@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.admin.applicationclass">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
     <application
         android:name=".ApplicationClass"
         android:allowBackup="true"
@@ -16,7 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service android:name=".MyService" />
+        <service android:name=".MyIntentService" />
+
+        <activity android:name=".ImageActivity"></activity>
     </application>
 
 </manifest>
